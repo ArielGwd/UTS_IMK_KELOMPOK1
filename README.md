@@ -2,8 +2,8 @@
 Bookshelf adalah sebuah aplikasi mini crud tentang catatan perpustakaan. 
 
 ## Role
-- admin: semua bisa akses
-- petugas : semua bisa akses kecuali menu petugas
+- admin: semua menu bisa akses
+- petugas : semua menu bisa akses kecuali menu petugas
 - siswa : hanya bisa melihat history peminjaman
 
 ## Testing 
