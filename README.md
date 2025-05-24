@@ -6,6 +6,25 @@ Bookshelf adalah sebuah aplikasi mini crud tentang catatan perpustakaan.
 - petugas : semua bisa akses kecuali menu petugas
 - siswa : hanya bisa melihat history peminjaman
 
+## Testing 
+- admin
+
+username: admin
+
+password: 123 
+
+- petugas
+
+username: test_petugas
+
+password: test
+
+- siswa
+
+username: test
+
+password: test
+
 
 ## Persiapan 
 1. Node.js v20.18.2 ([ Node.js](https://nodejs.org/en/download)) 
