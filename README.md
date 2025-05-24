@@ -1,5 +1,11 @@
 # E-Library - App mini catatan perpustakaan (PHP)
-Bookshelf adalah sebuah aplikasi mini crud tentang catatan perpustakaan.
+Bookshelf adalah sebuah aplikasi mini crud tentang catatan perpustakaan. 
+
+## Role
+- admin: semua bisa akses
+- petugas : semua bisa akses kecuali menu petugas
+- siswa : hanya bisa melihat history peminjaman
+
 
 ## Persiapan 
 1. Node.js v20.18.2 ([ Node.js](https://nodejs.org/en/download)) 
@@ -85,12 +91,18 @@ kemudian buka browser kembali `http://localhost/UTS_IMK_KELOMPOK1/`. Setelah itu
 13. Edit Petugas Modal
 ![Petugas Page](assets/img/preview/ubah-petugas.png)
 
-11. Peminjaman Page
+14. Peminjaman Page
 ![Petugas Page](assets/img/preview/peminjaman.png)
 
-12. Add Peminjaman Modal
+15. Add Peminjaman Modal
 ![Petugas Page](assets/img/preview/tambah-peminjaman.png)
 
-13. Edit Peminjaman Modal
+16. Edit Peminjaman Modal
 ![Petugas Page](assets/img/preview/ubah-peminjaman.png)
+
+17. Login Page
+![Petugas Page](assets/img/preview/login.png)
+
+18. Logout Page
+![Petugas Page](assets/img/preview/logout.png)
 
