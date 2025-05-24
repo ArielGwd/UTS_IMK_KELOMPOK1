@@ -74,7 +74,7 @@ kemudian buka browser kembali `http://localhost/UTS_IMK_KELOMPOK1/`. Setelah itu
 
 ## Preview  
 1. Dashboard
-![Dashboard Page](assets/img/preview/dashboard.png)
+![Dashboard Page](https://github.com/ArielGwd/UTS_IMK_KELOMPOK1/blob/0abc995f4b93b3ae993c27b0740ba7ab7c261513/assets/img/preview/dashboard.png)
  
 2. Book Page
 ![Dashboard Page](assets/img/preview/buku.png)
@@ -83,7 +83,7 @@ kemudian buka browser kembali `http://localhost/UTS_IMK_KELOMPOK1/`. Setelah itu
 ![Dashboard Page](assets/img/preview/tambah-buku.png)
 
 4. Edit Book Modal
-![Dashboard Page](assets/img/preview/ubah-buku.png)
+![Dashboard Page](https://github.com/ArielGwd/UTS_IMK_KELOMPOK1/blob/2acb6bd015258a86c3bd98f4512952f00974ae4f/assets/img/preview/ubah-buku.png)
 
 5. Category Page
 ![Category Page](assets/img/preview/kategori.png)
