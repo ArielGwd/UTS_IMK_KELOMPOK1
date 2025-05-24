@@ -126,4 +126,13 @@ kemudian buka browser kembali `http://localhost/UTS_IMK_KELOMPOK1/`. Setelah itu
 
 18. Logout Page
 ![Petugas Page](assets/img/preview/logout.png)
+ 
+19. Menu yang tersedia dari role petugas
+![Petugas Page](assets/img/preview/dashboard-petugas.png)
+
+20. Menu yang tersedia dari role siswa
+![Siswa Page](assets/img/preview/peminjaman-siswa.png)
+
+
+
 
