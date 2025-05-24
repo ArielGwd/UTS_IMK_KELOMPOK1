@@ -41,7 +41,9 @@ password: test
 ```bash
 git clone https://github.com/ArielGwd/UTS_IMK_KELOMPOK1.git
 cd UTS_IMK_KELOMPOK1
-```
+``` 
+
+jangan lupa import database [e-library.sql](e-library.sql)
 
 kemudian ke browser buka `http://localhost/UTS_IMK_KELOMPOK1/`
 
