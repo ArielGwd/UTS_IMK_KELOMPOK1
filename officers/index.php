@@ -164,18 +164,50 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="../node_modules/simple-datatables/dist/umd/simple-datatables.js"></script>
     <script>
-        let usernameInputs = document.querySelectorAll('.username');
+        if (document.getElementById("pagination-table") && typeof simpleDatatables.DataTable !== "undefined") {
+            const dataTable = new simpleDatatables.DataTable("#pagination-table", {
+                paging: true,
+                perPage: 5,
+                perPageSelect: [5, 10, 15, 20, 25],
+                sortable: false,
+
+                labels: {
+                    placeholder: "Pencarian...",
+                    perPage: "data per halaman",
+                    noRows: "Tidak ada data",
+                    noResults: "Tidak ada hasil ditemukan",
+                    info: "{start} - {end} dari {rows} data",
+                },
+            });
+        }
+
+        const usernameInput = document.getElementById('username');
+        usernameInput.addEventListener('input', function() {
+            this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '');
+        });
+
+        const usernameInputs = document.querySelectorAll('.username');
         usernameInputs.forEach(function(input) {
             input.addEventListener('input', function() {
                 this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '');
             });
         });
 
+        const pwdInputId = document.getElementById('password');
+        const toggleBtnId = document.getElementById('toggle-password');
+        const eyeOpenId = document.getElementById('eye-open');
+        const eyeClosedId = document.getElementById('eye-closed');
+        toggleBtnId.addEventListener('click', () => {
+            const isPwd = pwdInputId.type === 'password';
+            pwdInputId.type = isPwd ? 'text' : 'password';
+            eyeOpenId.classList.toggle('hidden');
+            eyeClosedId.classList.toggle('hidden');
+        });
 
-        let pwdInput = document.querySelectorAll('.password');
-        let toggleBtn = document.querySelectorAll('.toggle-password');
-        let eyeOpen = document.querySelectorAll('.eye-open');
-        let eyeClosed = document.querySelectorAll('.eye-closed');
+        const pwdInput = document.querySelectorAll('.password');
+        const toggleBtn = document.querySelectorAll('.toggle-password');
+        const eyeOpen = document.querySelectorAll('.eye-open');
+        const eyeClosed = document.querySelectorAll('.eye-closed');
         toggleBtn.forEach(function(btn, index) {
             btn.addEventListener('click', () => {
                 const isPwd = pwdInput[index].type === 'password';
@@ -184,20 +216,42 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
                 eyeClosed[index].classList.toggle('hidden');
             });
         });
-        let confirmPwdInput = document.querySelectorAll('.confirm-password');
-        let confirmToggleBtn = document.querySelectorAll('.toggle-confirm-password');
-        let confirmEyeOpen = document.querySelectorAll('.confirm-eye-open');
-        let confirmEyeClosed = document.querySelectorAll('.confirm-eye-closed');
+
+        const confirmPwdInputId = document.getElementById('confirm-password');
+        const confirmToggleBtnId = document.getElementById('toggle-confirm-password');
+        const confirmEyeOpenId = document.getElementById('confirm-eye-open');
+        const confirmEyeClosedId = document.getElementById('confirm-eye-closed');
+        confirmToggleBtnId.addEventListener('click', () => {
+            const isPwd = confirmPwdInputId.type === 'password';
+            confirmPwdInputId.type = isPwd ? 'text' : 'password';
+            confirmEyeOpenId.classList.toggle('hidden');
+            confirmEyeClosedId.classList.toggle('hidden');
+        });
+
+        const confirmPwdInput = document.querySelectorAll('.confirm-password');
+        const confirmToggleBtn = document.querySelectorAll('.toggle-confirm-password');
+        const confirmEyeOpen = document.querySelectorAll('.confirm-eye-open');
+        const confirmEyeClosed = document.querySelectorAll('.confirm-eye-closed');
         confirmToggleBtn.forEach(function(btn, index) {
             btn.addEventListener('click', () => {
-                let isPwd = confirmPwdInput[index].type === 'password';
+                const isPwd = confirmPwdInput[index].type === 'password';
                 confirmPwdInput[index].type = isPwd ? 'text' : 'password';
                 confirmEyeOpen[index].classList.toggle('hidden');
                 confirmEyeClosed[index].classList.toggle('hidden');
             });
         });
 
-
+        confirmPwdInputId.setAttribute('readonly', true);
+        confirmPwdInputId.classList.add('bg-gray-200', 'cursor-not-allowed');
+        pwdInputId.addEventListener('input', function() {
+            if (this.value !== '') {
+                confirmPwdInputId.removeAttribute('readonly');
+                confirmPwdInputId.classList.remove('bg-gray-200', 'cursor-not-allowed');
+            } else {
+                confirmPwdInputId.setAttribute('readonly', true);
+                confirmPwdInputId.classList.add('bg-gray-200', 'cursor-not-allowed');
+            }
+        });
 
         confirmPwdInput.forEach(function(input) {
             input.setAttribute('readonly', true);
@@ -214,6 +268,22 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
                     }
                 });
             });
+        });
+
+        confirmPwdInputId.addEventListener('input', function() {
+            const password = pwdInputId.value;
+            const confirmPassword = this.value;
+            const errorElement = document.getElementById('password-error');
+
+            if (password != confirmPassword) {
+                errorElement.classList.remove('hidden');
+                this.classList.remove('focus:ring-violet-500', 'focus:border-violet-500');
+                this.classList.add('border', 'border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+            } else {
+                errorElement.classList.add('hidden');
+                this.classList.add('focus:ring-violet-500', 'focus:border-violet-500');
+                this.classList.remove('border', 'border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+            }
         });
 
         confirmPwdInput.forEach(function(input) {
@@ -233,23 +303,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
                 }
             });
         });
-
-        if (document.getElementById("pagination-table") && typeof simpleDatatables.DataTable !== "undefined") {
-            const dataTable = new simpleDatatables.DataTable("#pagination-table", {
-                paging: true,
-                perPage: 5,
-                perPageSelect: [5, 10, 15, 20, 25],
-                sortable: false,
-
-                labels: {
-                    placeholder: "Pencarian...",
-                    perPage: "data per halaman",
-                    noRows: "Tidak ada data",
-                    noResults: "Tidak ada hasil ditemukan",
-                    info: "{start} - {end} dari {rows} data",
-                },
-            });
-        }
     </script>
 </body>
 

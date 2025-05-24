@@ -163,6 +163,23 @@ require_once '../config/request.php';
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="../node_modules/simple-datatables/dist/umd/simple-datatables.js"></script>
     <script>
+        if (document.getElementById("pagination-table") && typeof simpleDatatables.DataTable !== "undefined") {
+            const dataTable = new simpleDatatables.DataTable("#pagination-table", {
+                paging: true,
+                perPage: 5,
+                perPageSelect: [5, 10, 15, 20, 25],
+                sortable: false,
+
+                labels: {
+                    placeholder: "Pencarian...",
+                    perPage: "data per halaman",
+                    noRows: "Tidak ada data",
+                    noResults: "Tidak ada hasil ditemukan",
+                    info: "{start} - {end} dari {rows} data",
+                },
+            });
+        }
+
         const usernameInput = document.getElementById('username');
         usernameInput.addEventListener('input', function() {
             this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '');
@@ -285,23 +302,6 @@ require_once '../config/request.php';
                 }
             });
         });
-
-        if (document.getElementById("pagination-table") && typeof simpleDatatables.DataTable !== "undefined") {
-            const dataTable = new simpleDatatables.DataTable("#pagination-table", {
-                paging: true,
-                perPage: 5,
-                perPageSelect: [5, 10, 15, 20, 25],
-                sortable: false,
-
-                labels: {
-                    placeholder: "Pencarian...",
-                    perPage: "data per halaman",
-                    noRows: "Tidak ada data",
-                    noResults: "Tidak ada hasil ditemukan",
-                    info: "{start} - {end} dari {rows} data",
-                },
-            });
-        }
     </script>
 </body>
 
